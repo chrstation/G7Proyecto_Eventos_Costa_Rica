@@ -1,0 +1,27 @@
+@model UsuarioViewModel
+@{
+    ViewData["Title"] = "Borrar usuario";
+}
+
+<h1 class="h3 mb-3">Borrar usuario</h1>
+
+<div class="alert alert-warning">
+    ¿Está seguro de que desea borrar este usuario? No se puede borrar si tiene entradas compradas ni a usted mismo.
+</div>
+
+<dl class="row">
+    <dt class="col-sm-3">Nombre</dt>
+    <dd class="col-sm-9">@Model.Nombre</dd>
+
+    <dt class="col-sm-3">Correo</dt>
+    <dd class="col-sm-9">@Model.Correo</dd>
+
+    <dt class="col-sm-3">Rol</dt>
+    <dd class="col-sm-9">@Model.Rol</dd>
+</dl>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <button type="submit" class="btn btn-danger">Sí, borrar</button>
+    <a class="btn btn-outline-secondary" asp-action="Index">Cancelar</a>
+</form>

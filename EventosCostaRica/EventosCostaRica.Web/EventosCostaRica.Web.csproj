@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EventosCostaRica.Datos\EventosCostaRica.Datos.csproj" />
+    <ProjectReference Include="..\EventosCostaRica.Entidades\EventosCostaRica.Entidades.csproj" />
+    <ProjectReference Include="..\EventosCostaRica.Negocio\EventosCostaRica.Negocio.csproj" />
+  </ItemGroup>
+
+</Project>

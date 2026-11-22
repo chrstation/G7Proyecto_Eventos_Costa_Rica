@@ -1,0 +1,49 @@
+@model List<EventoViewModel>
+@{
+    ViewData["Title"] = "Próximos eventos";
+}
+
+<h1 class="h3 mb-4">Próximos eventos</h1>
+
+@if (Model.Count == 0)
+{
+    <div class="alert alert-info">Por el momento no hay eventos programados. ¡Vuelva pronto!</div>
+}
+else
+{
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        @foreach (var evento in Model)
+        {
+            <div class="col">
+                <div class="evento-card h-100">
+                    @if (!string.IsNullOrWhiteSpace(evento.BannerUrl))
+                    {
+                        <img class="banner-img" src="@evento.BannerUrl" alt="Banner de @evento.Nombre" />
+                    }
+                    else
+                    {
+                        <div class="banner-img banner-vacio">Eventos Costa Rica</div>
+                    }
+
+                    <div class="evento-cuerpo">
+                        <h2 class="h5 mb-1">@evento.Nombre</h2>
+                        <p class="evento-dato mb-1">@evento.FechaLarga</p>
+                        <p class="evento-dato mb-3">@evento.Lugar</p>
+
+                        <div class="d-flex justify-content-between align-items-center mt-auto">
+                            @if (evento.Agotado)
+                            {
+                                <span class="badge text-bg-danger">Agotado</span>
+                            }
+                            else
+                            {
+                                <span class="badge text-bg-success">@evento.AsientosDisponibles disponibles</span>
+                            }
+                            <a class="btn btn-sm btn-primary" asp-action="Detalle" asp-route-id="@evento.Id">Ver detalle</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

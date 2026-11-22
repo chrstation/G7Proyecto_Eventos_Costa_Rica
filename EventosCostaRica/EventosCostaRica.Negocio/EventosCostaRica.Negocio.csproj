@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EventosCostaRica.Datos\EventosCostaRica.Datos.csproj" />
+    <ProjectReference Include="..\EventosCostaRica.Entidades\EventosCostaRica.Entidades.csproj" />
+  </ItemGroup>
+
+</Project>

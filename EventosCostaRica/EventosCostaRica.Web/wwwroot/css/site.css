@@ -1,0 +1,463 @@
+/* ==========================================================
+   Estilos personalizados - Eventos Costa Rica
+   Se apoyan en Bootstrap 5.3.
+   ========================================================== */
+
+:root {
+    --color-primario: #7c3aed;
+    --color-primario-oscuro: #5b21b6;
+    --color-secundario: #db2777;
+    --color-fondo: #f5f3fa;
+    --color-texto: #1f2937;
+    --color-suave: #6b7280;
+    --color-borde: #e5e7eb;
+    --radio: 14px;
+    --sombra: 0 4px 20px rgba(31, 41, 55, 0.08);
+
+    --bs-primary: #7c3aed;
+    --bs-primary-rgb: 124, 58, 237;
+    --bs-link-color: #7c3aed;
+    --bs-link-hover-color: #5b21b6;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--color-fondo);
+    color: var(--color-texto);
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+main {
+    flex: 1;
+    padding-bottom: 2.5rem;
+    animation: aparecer 0.35s ease-out;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1, .h2, .h3 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+/* ---------- Barra de navegación ---------- */
+.navbar {
+    background: linear-gradient(135deg, var(--color-primario), var(--color-secundario)) !important;
+    box-shadow: 0 4px 16px rgba(124, 58, 237, 0.35);
+    padding: 0.75rem 0;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-right: 2rem;
+}
+
+.navbar .nav-link {
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 500;
+    border-radius: 999px;
+    padding: 0.4rem 1rem;
+    margin-right: 0.25rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.navbar .nav-link:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.navbar .nav-link.active {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* ---------- Botones ---------- */
+.btn {
+    border-radius: 10px;
+    font-weight: 600;
+    padding: 0.5rem 1.1rem;
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+}
+
+.btn-sm {
+    padding: 0.3rem 0.75rem;
+    font-size: 0.8rem;
+}
+
+.btn-primary {
+    --bs-btn-bg: var(--color-primario);
+    --bs-btn-border-color: var(--color-primario);
+    --bs-btn-hover-bg: var(--color-primario-oscuro);
+    --bs-btn-hover-border-color: var(--color-primario-oscuro);
+    --bs-btn-active-bg: var(--color-primario-oscuro);
+    --bs-btn-active-border-color: var(--color-primario-oscuro);
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+}
+
+.btn-outline-primary {
+    --bs-btn-color: var(--color-primario);
+    --bs-btn-border-color: var(--color-primario);
+    --bs-btn-hover-bg: var(--color-primario);
+    --bs-btn-hover-border-color: var(--color-primario);
+    --bs-btn-active-bg: var(--color-primario-oscuro);
+    --bs-btn-active-border-color: var(--color-primario-oscuro);
+}
+
+/* ---------- Tablas ---------- */
+.table-responsive {
+    background: #fff;
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+    overflow: hidden;
+}
+
+.table {
+    margin-bottom: 0;
+    --bs-table-striped-bg: #faf8ff;
+    --bs-table-hover-bg: #f1ebfd;
+}
+
+.table thead th {
+    background: #f9fafb;
+    color: var(--color-suave);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 1rem;
+    border-bottom: 1px solid var(--color-borde);
+}
+
+.table tbody td {
+    padding: 0.9rem 1rem;
+    border-color: var(--color-borde);
+}
+
+/* ---------- Formularios (tarjeta) ---------- */
+form:has(.form-control),
+form:has(.form-select) {
+    background: #fff;
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+    padding: 1.75rem;
+}
+
+.form-label {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--color-texto);
+    margin-bottom: 0.35rem;
+}
+
+.form-control,
+.form-select {
+    border-radius: 10px;
+    border-color: var(--color-borde);
+    padding: 0.6rem 0.85rem;
+    background-color: #fcfcfd;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.15);
+    background-color: #fff;
+}
+
+.text-danger {
+    font-size: 0.8rem;
+}
+
+/* ---------- Detalle y confirmación ---------- */
+dl.row {
+    margin-bottom: 0;
+}
+
+dl.row dt {
+    color: var(--color-suave);
+    font-weight: 600;
+    padding: 0.4rem 0;
+}
+
+dl.row dd {
+    padding: 0.4rem 0;
+    margin: 0;
+}
+
+main > dl.row {
+    background: #fff;
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+    padding: 1.25rem;
+    margin: 0 0 1.25rem 0;
+}
+
+/* ---------- Alertas ---------- */
+.alert {
+    border: none;
+    border-left: 5px solid;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(31, 41, 55, 0.06);
+}
+
+.alert-success {
+    border-left-color: #16a34a;
+}
+
+.alert-danger {
+    border-left-color: #dc2626;
+}
+
+.alert-warning {
+    border-left-color: #f59e0b;
+}
+
+.alert-info {
+    border-left-color: var(--color-primario);
+}
+
+/* ---------- Tarjetas de eventos ---------- */
+.evento-card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.evento-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(124, 58, 237, 0.18);
+}
+
+.banner-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
+}
+
+.banner-vacio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+.evento-cuerpo {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 1.25rem;
+}
+
+.evento-dato {
+    color: var(--color-suave);
+    font-size: 0.9rem;
+}
+
+/* ---------- Detalle de evento ---------- */
+.evento-detalle {
+    background: #fff;
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+    overflow: hidden;
+}
+
+.banner-detalle {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    display: block;
+    background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
+}
+
+.evento-detalle-cuerpo {
+    padding: 1.75rem;
+}
+
+/* ---------- Mapa de asientos ---------- */
+.escenario {
+    background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
+    color: #fff;
+    text-align: center;
+    letter-spacing: 0.4em;
+    font-weight: 700;
+    font-size: 0.8rem;
+    padding: 0.6rem;
+    border-radius: 8px 8px 40px 40px;
+    margin: 0 auto 1.5rem;
+    max-width: 520px;
+}
+
+.mapa-asientos {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    align-items: center;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+}
+
+.fila-asientos {
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+}
+
+.etiqueta-fila {
+    width: 1.5rem;
+    text-align: center;
+    font-weight: 700;
+    color: var(--color-suave);
+}
+
+.asiento {
+    position: relative;
+    margin: 0;
+}
+
+.asiento input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.asiento span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    background: #e5e7eb;
+    color: #374151;
+    border: 2px solid transparent;
+    transition: transform 0.15s, background 0.15s;
+}
+
+.asiento input:hover:not(:disabled) + span {
+    background: #ddd6fe;
+}
+
+.asiento input:checked + span {
+    background: var(--color-primario);
+    color: #fff;
+    transform: scale(1.08);
+}
+
+.asiento input:focus-visible + span {
+    border-color: var(--color-secundario);
+}
+
+.asiento input:disabled + span {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.asiento input[data-ocupado] + span {
+    background: #fecaca;
+    color: #991b1b;
+    opacity: 1;
+    text-decoration: line-through;
+}
+
+.leyenda {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+    font-size: 0.85rem;
+    color: var(--color-suave);
+}
+
+.muestra {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 4px;
+    vertical-align: middle;
+    margin-right: 0.3rem;
+}
+
+.muestra.libre {
+    background: #e5e7eb;
+}
+
+.muestra.elegido {
+    background: var(--color-primario);
+}
+
+.muestra.vendido {
+    background: #fecaca;
+}
+
+.resumen-compra {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    border-top: 1px solid var(--color-borde);
+    padding-top: 1.25rem;
+}
+
+/* ---------- Mis boletos ---------- */
+.boleto {
+    background: #fff;
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+    border-left: 6px solid var(--color-primario);
+    padding: 1.25rem;
+}
+
+.ficha-asiento {
+    background: #ede9fe;
+    color: var(--color-primario-oscuro);
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+}
+
+/* ---------- Pie de página ---------- */
+.pie {
+    text-align: center;
+    color: var(--color-suave);
+    font-size: 0.85rem;
+    padding: 1.25rem 0;
+    border-top: 1px solid var(--color-borde);
+    background: #fff;
+}

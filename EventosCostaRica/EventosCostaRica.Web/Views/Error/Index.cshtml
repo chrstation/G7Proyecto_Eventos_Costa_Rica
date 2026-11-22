@@ -1,0 +1,12 @@
+@model ErrorViewModel
+@{
+    ViewData["Title"] = "Error";
+}
+
+<div class="text-center py-5">
+    <p class="display-1 fw-bold text-danger mb-0">@Model.Codigo</p>
+    <h1 class="h3 mb-3">@Model.Titulo</h1>
+    <p class="lead">@Model.Mensaje</p>
+    <p class="text-muted small">Código de seguimiento: @Model.IdSolicitud</p>
+    <a class="btn btn-primary" asp-controller="Eventos" asp-action="Index">Volver al inicio</a>
+</div>

@@ -1,0 +1,56 @@
+@model EventoViewModel
+@{
+    ViewData["Title"] = Model.Nombre;
+}
+
+<div class="evento-detalle">
+    @if (!string.IsNullOrWhiteSpace(Model.BannerUrl))
+    {
+        <img class="banner-detalle" src="@Model.BannerUrl" alt="Banner de @Model.Nombre" />
+    }
+    else
+    {
+        <div class="banner-detalle banner-vacio">Eventos Costa Rica</div>
+    }
+
+    <div class="evento-detalle-cuerpo">
+        <h1 class="h2 mb-3">@Model.Nombre</h1>
+
+        <dl class="row mb-3">
+            <dt class="col-sm-3">Fecha y hora</dt>
+            <dd class="col-sm-9">@Model.FechaLarga</dd>
+
+            <dt class="col-sm-3">Lugar</dt>
+            <dd class="col-sm-9">@Model.Lugar</dd>
+
+            <dt class="col-sm-3">Estado</dt>
+            <dd class="col-sm-9">
+                @if (Model.Finalizado)
+                {
+                    <span class="badge text-bg-secondary">Evento finalizado</span>
+                }
+                else if (Model.Agotado)
+                {
+                    <span class="badge text-bg-danger">Vendido (agotado)</span>
+                }
+                else
+                {
+                    <span class="badge text-bg-success">Disponible</span>
+                    <span class="text-muted ms-2">@Model.AsientosDisponibles de @(Evento.Capacidad) asientos</span>
+                }
+            </dd>
+        </dl>
+
+        @if (!string.IsNullOrWhiteSpace(Model.Descripcion))
+        {
+            <p class="mb-4">@Model.Descripcion</p>
+        }
+
+        @if (Model.PuedeComprar)
+        {
+            <a class="btn btn-primary btn-lg" asp-controller="Entradas" asp-action="Comprar" asp-route-id="@Model.Id">Comprar boletos</a>
+        }
+
+        <a class="btn btn-outline-secondary btn-lg" asp-action="Index">Volver a los eventos</a>
+    </div>
+</div>

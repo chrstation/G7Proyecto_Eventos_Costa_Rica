@@ -1,0 +1,55 @@
+@model CompraViewModel
+@{
+    ViewData["Title"] = "Comprar boletos";
+}
+
+<h1 class="h3 mb-1">Comprar boletos</h1>
+<p class="text-muted mb-4">@Model.Evento.Nombre &middot; @Model.Evento.FechaLarga &middot; @Model.Evento.Lugar</p>
+
+<form asp-action="Comprar" asp-route-id="@Model.Evento.Id" method="post" id="formCompra" data-max="@Model.MaximoAsientos">
+    <div class="escenario">ESCENARIO</div>
+
+    <div class="mapa-asientos">
+        @for (var fila = 1; fila <= Model.Filas; fila++)
+        {
+            <div class="fila-asientos">
+                <span class="etiqueta-fila">@((char)('A' + fila - 1))</span>
+
+                @for (var numero = 1; numero <= Model.AsientosPorFila; numero++)
+                {
+                    var clave = $"{fila}-{numero}";
+                    var ocupado = Model.Ocupados.Contains(clave);
+
+                    <label class="asiento">
+                        <input type="checkbox" name="asientos" value="@clave"
+                               data-etiqueta="@Asiento.CrearEtiqueta(fila, numero)"
+                               data-ocupado="@(ocupado ? "1" : null)"
+                               disabled="@ocupado" />
+                        <span>@Asiento.CrearEtiqueta(fila, numero)</span>
+                    </label>
+                }
+            </div>
+        }
+    </div>
+
+    <div class="leyenda">
+        <span><i class="muestra libre"></i> Disponible</span>
+        <span><i class="muestra elegido"></i> Seleccionado</span>
+        <span><i class="muestra vendido"></i> Vendido</span>
+    </div>
+
+    <div class="resumen-compra">
+        <div>
+            <div class="text-muted small">Asientos seleccionados (máximo @Model.MaximoAsientos)</div>
+            <div class="fw-semibold" id="resumenAsientos">Ninguno</div>
+        </div>
+        <div>
+            <button type="submit" id="btnComprar" class="btn btn-primary" disabled>Comprar</button>
+            <a class="btn btn-outline-secondary" asp-controller="Eventos" asp-action="Detalle" asp-route-id="@Model.Evento.Id">Cancelar</a>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <script src="~/js/compra.js" asp-append-version="true"></script>
+}

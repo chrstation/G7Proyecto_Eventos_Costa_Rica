@@ -1,0 +1,15 @@
+@model EventoViewModel
+@{
+    ViewData["Title"] = "Nuevo evento";
+}
+
+<h1 class="h3 mb-3">Nuevo evento</h1>
+
+<form asp-action="Create" method="post">
+    <partial name="_Formulario" model="Model" />
+
+    <div class="mt-4">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a class="btn btn-outline-secondary" asp-action="Index">Cancelar</a>
+    </div>
+</form>

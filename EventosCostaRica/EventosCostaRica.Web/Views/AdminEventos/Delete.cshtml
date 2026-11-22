@@ -1,0 +1,30 @@
+@model EventoViewModel
+@{
+    ViewData["Title"] = "Borrar evento";
+}
+
+<h1 class="h3 mb-3">Borrar evento</h1>
+
+<div class="alert alert-warning">
+    ¿Está seguro de que desea borrar este evento? Solo se puede borrar si no tiene entradas vendidas.
+</div>
+
+<dl class="row">
+    <dt class="col-sm-3">Evento</dt>
+    <dd class="col-sm-9">@Model.Nombre</dd>
+
+    <dt class="col-sm-3">Fecha y hora</dt>
+    <dd class="col-sm-9">@Model.FechaLarga</dd>
+
+    <dt class="col-sm-3">Lugar</dt>
+    <dd class="col-sm-9">@Model.Lugar</dd>
+
+    <dt class="col-sm-3">Entradas vendidas</dt>
+    <dd class="col-sm-9">@Model.EntradasVendidas</dd>
+</dl>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <button type="submit" class="btn btn-danger">Sí, borrar</button>
+    <a class="btn btn-outline-secondary" asp-action="Index">Cancelar</a>
+</form>
