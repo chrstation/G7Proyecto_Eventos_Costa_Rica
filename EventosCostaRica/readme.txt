@@ -2,8 +2,8 @@ EVENTOS COSTA RICA - VENTA DE ENTRADAS PARA EVENTOS
 ===================================================
 
 1. INTEGRANTES FINALES DEL GRUPO
-   - Nombre Apellido (cedula/carne)
-   - Nombre Apellido (cedula/carne)
+   - Herberth Masis Canales
+   - 
 
 2. REPOSITORIO
    https://github.com/usuario/EventosCostaRica   (reemplazar o indicar "No aplica")
