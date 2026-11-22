@@ -3,7 +3,7 @@ EVENTOS COSTA RICA - VENTA DE ENTRADAS PARA EVENTOS
 
 1. INTEGRANTES FINALES DEL GRUPO
    - Herberth Masis Canales
-   - 
+   - Michael Castro Herrera
 
 2. REPOSITORIO
    https://github.com/chrstation/G7Proyecto_Eventos_Costa_Rica.git
