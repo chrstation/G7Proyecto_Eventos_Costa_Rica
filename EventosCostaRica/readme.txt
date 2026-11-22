@@ -6,7 +6,7 @@ EVENTOS COSTA RICA - VENTA DE ENTRADAS PARA EVENTOS
    - 
 
 2. REPOSITORIO
-   https://github.com/usuario/EventosCostaRica   (reemplazar o indicar "No aplica")
+   https://github.com/chrstation/G7Proyecto_Eventos_Costa_Rica.git
 
 3. ESPECIFICACION BASICA DEL PROYECTO
 
