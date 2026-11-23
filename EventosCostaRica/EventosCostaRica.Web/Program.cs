@@ -15,7 +15,6 @@ builder.Services.AddControllersWithViews(opciones =>
     opciones.Filters.Add(new AuthorizeFilter(politica));
 });
 
-
 // Autenticación con cookies y autorización por roles.
 builder.Services
     .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
