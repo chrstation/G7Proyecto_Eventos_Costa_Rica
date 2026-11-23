@@ -34,7 +34,7 @@ public static class InicializadorBaseDatos
                 Descripcion = "Una velada con los mejores músicos de jazz del país.",
                 FechaEvento = hoy.AddDays(15).AddHours(19),
                 Lugar = "Teatro Nacional, San José",
-                BannerUrl = "https://picsum.photos/seed/jazz/900/450"
+                BannerUrl = "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=900&h=450&q=80"
             });
 
             await eventoServicio.RegistrarAsync(new Evento
@@ -43,7 +43,7 @@ public static class InicializadorBaseDatos
                 Descripcion = "Degustación de comida típica costarricense con chefs invitados.",
                 FechaEvento = hoy.AddDays(30).AddHours(12),
                 Lugar = "Parque Central, Liberia",
-                BannerUrl = "https://picsum.photos/seed/comida/900/450"
+                BannerUrl = "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=900&h=450&q=80"
             });
 
             await eventoServicio.RegistrarAsync(new Evento
@@ -52,7 +52,7 @@ public static class InicializadorBaseDatos
                 Descripcion = "Música en vivo frente al mar con bandas nacionales.",
                 FechaEvento = hoy.AddDays(45).AddHours(18),
                 Lugar = "Playa Hermosa, Jacó",
-                BannerUrl = "https://picsum.photos/seed/playa/900/450"
+                BannerUrl = "https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=900&h=450&q=80"
             });
         }
     }
