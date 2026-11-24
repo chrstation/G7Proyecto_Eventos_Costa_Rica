@@ -1,0 +1,166 @@
+@model InicioViewModel
+@{
+    ViewData["Title"] = "Inicio";
+    var autenticado = User.Identity?.IsAuthenticated == true;
+}
+
+@section Estilos {
+    <link rel="stylesheet" href="~/css/inicio.css" asp-append-version="true" />
+}
+
+<section class="hero">
+    <div class="row align-items-center g-4">
+        <div class="col-lg-7">
+            <span class="hero-etiqueta">Entradas para eventos en Costa Rica</span>
+            <h1>Viva noches <span class="oro">inolvidables</span> en Costa Rica</h1>
+            <p class="hero-texto">
+                Música, gastronomía y experiencias únicas. Consulte los próximos eventos,
+                elija sus asientos en el mapa de la sala y tenga sus boletos a un clic.
+            </p>
+
+            <div class="d-flex flex-wrap gap-3">
+                @if (autenticado)
+                {
+                    <a class="btn btn-primary btn-lg" asp-controller="Eventos" asp-action="Index">Ver todos los eventos</a>
+                    <a class="btn btn-outline-primary btn-lg" asp-controller="Entradas" asp-action="MisBoletos">Mis boletos</a>
+                }
+                else
+                {
+                    <a class="btn btn-primary btn-lg" asp-controller="Cuenta" asp-action="Login">Iniciar sesión</a>
+                    <a class="btn btn-outline-primary btn-lg" href="#proximos">Ver próximos eventos</a>
+                }
+            </div>
+        </div>
+
+        <div class="col-lg-5 text-center d-none d-lg-block">
+            <img class="hero-logo" src="~/logo.svg" alt="" />
+        </div>
+    </div>
+</section>
+
+<section class="row g-3 mb-2">
+    <div class="col-md-4">
+        <div class="dato-inicio">
+            <div class="numero">@Model.TotalEventos</div>
+            <div class="texto">Próximos eventos</div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="dato-inicio">
+            <div class="numero">@Model.AsientosDisponibles</div>
+            <div class="texto">Asientos disponibles</div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="dato-inicio">
+            <div class="numero">@Model.AsientosPorEvento</div>
+            <div class="texto">Asientos por evento</div>
+        </div>
+    </div>
+</section>
+
+<section id="proximos">
+    <div class="titulo-seccion">
+        <h2 class="h2">Próximos eventos</h2>
+        <p class="text-muted mb-0">Los que se acercan, para que no se pierda ninguno.</p>
+    </div>
+
+    @if (Model.Destacados.Count == 0)
+    {
+        <div class="alert alert-info">Muy pronto habrá nuevos eventos. ¡Vuelva a visitarnos!</div>
+    }
+    else
+    {
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            @foreach (var evento in Model.Destacados)
+            {
+                <div class="col">
+                    <div class="evento-card h-100">
+                        @if (!string.IsNullOrWhiteSpace(evento.BannerUrl))
+                        {
+                            <img class="banner-img" src="@evento.BannerUrl" alt="Banner de @evento.Nombre" />
+                        }
+                        else
+                        {
+                            <div class="banner-img banner-vacio">Eventos Costa Rica</div>
+                        }
+
+                        <div class="evento-cuerpo">
+                            <h3 class="h5 mb-1">@evento.Nombre</h3>
+                            <p class="evento-dato mb-1">@evento.FechaLarga</p>
+                            <p class="evento-dato mb-3">@evento.Lugar</p>
+
+                            <div class="d-flex justify-content-between align-items-center mt-auto">
+                                @if (evento.Agotado)
+                                {
+                                    <span class="badge text-bg-danger">Agotado</span>
+                                }
+                                else
+                                {
+                                    <span class="badge text-bg-success">@evento.AsientosDisponibles disponibles</span>
+                                }
+                                <a class="btn btn-sm btn-primary" asp-controller="Eventos" asp-action="Detalle" asp-route-id="@evento.Id">Ver detalle</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="text-center mt-4">
+            @if (autenticado)
+            {
+                <a class="btn btn-outline-primary" asp-controller="Eventos" asp-action="Index">Ver todos los eventos</a>
+            }
+            else
+            {
+                <p class="text-muted small mb-0">Inicie sesión para ver el detalle de cada evento y comprar sus boletos.</p>
+            }
+        </div>
+    }
+</section>
+
+<section>
+    <div class="titulo-seccion">
+        <h2 class="h2">Así de fácil</h2>
+        <p class="text-muted mb-0">Tres pasos para asegurar su lugar.</p>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="paso">
+                <div class="paso-numero">1</div>
+                <h3 class="h5">Inicie sesión</h3>
+                <p class="text-muted mb-0">Ingrese con su cuenta para ver los eventos y comprar sus boletos.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="paso">
+                <div class="paso-numero">2</div>
+                <h3 class="h5">Elija su evento</h3>
+                <p class="text-muted mb-0">Revise la fecha, el lugar y la disponibilidad de cada evento.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="paso">
+                <div class="paso-numero">3</div>
+                <h3 class="h5">Escoja sus asientos</h3>
+                <p class="text-muted mb-0">Seleccione hasta 10 asientos en el mapa de la sala y consulte sus boletos cuando quiera.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-final">
+    <h2 class="h2 mb-2">¿Listo para su próxima experiencia?</h2>
+    <p class="text-muted mb-4">Los mejores asientos se agotan rápido.</p>
+
+    @if (autenticado)
+    {
+        <a class="btn btn-primary btn-lg" asp-controller="Eventos" asp-action="Index">Elegir un evento</a>
+    }
+    else
+    {
+        <a class="btn btn-primary btn-lg" asp-controller="Cuenta" asp-action="Login">Iniciar sesión</a>
+    }
+</section>

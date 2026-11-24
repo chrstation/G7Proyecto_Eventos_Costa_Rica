@@ -83,7 +83,7 @@ public class CuentaController : Controller
     {
         await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
-        return RedirectToAction(nameof(Login));
+        return RedirectToAction("Index", "Home");
     }
 
     // GET: /Cuenta/AccesoDenegado
