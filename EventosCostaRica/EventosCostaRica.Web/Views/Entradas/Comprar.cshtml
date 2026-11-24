@@ -20,11 +20,10 @@
                     var clave = $"{fila}-{numero}";
                     var ocupado = Model.Ocupados.Contains(clave);
 
-                    <label class="asiento">
+                    <label class="asiento @(ocupado ? "ocupado" : "")">
                         <input type="checkbox" name="asientos" value="@clave"
                                data-etiqueta="@Asiento.CrearEtiqueta(fila, numero)"
-                               data-ocupado="@(ocupado ? "1" : null)"
-                               disabled="@ocupado" />
+                        @(ocupado ? "disabled" : "") />
                         <span>@Asiento.CrearEtiqueta(fila, numero)</span>
                     </label>
                 }

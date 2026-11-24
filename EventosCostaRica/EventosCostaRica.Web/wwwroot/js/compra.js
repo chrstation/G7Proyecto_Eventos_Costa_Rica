@@ -11,6 +11,10 @@
     const resumen = document.getElementById('resumenAsientos');
     const boton = document.getElementById('btnComprar');
 
+    function estaVendido(asiento) {
+        return asiento.closest('.asiento').classList.contains('ocupado');
+    }
+
     function actualizar() {
         const elegidos = Array.from(asientos).filter(function (a) { return a.checked; });
 
@@ -20,9 +24,9 @@
 
         boton.disabled = elegidos.length === 0;
 
-        // Al llegar al máximo, se bloquean los demás asientos libres.
+        // Al llegar al máximo, se bloquean los demás asientos libres (los vendidos nunca se tocan).
         asientos.forEach(function (asiento) {
-            if (!asiento.dataset.ocupado && !asiento.checked) {
+            if (!estaVendido(asiento) && !asiento.checked) {
                 asiento.disabled = elegidos.length >= maximo;
             }
         });

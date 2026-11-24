@@ -505,7 +505,7 @@ main > dl.row {
         cursor: not-allowed;
     }
 
-    .asiento input[data-ocupado] + span {
+    .asiento.ocupado input + span {
         background: #3a1620;
         color: #b0596b;
         opacity: 1;
